@@ -3,9 +3,9 @@
 var request = require("request")
 
 exports.find = (function (req, res) {
-    var num = req.body.queryResult.parameters.number
-        ? req.body.queryResult.parameters.number :
-        420;
+    var num = req.body.queryResult.parameters.number;
+       // ? req.body.queryResult.parameters.number :
+       // 420;
     var url = "http://numbersapi.com/" + num;
     var utype = ["math", "trivia"];
     var type = "";
