@@ -96,7 +96,16 @@ exports.find = (function (req, res) {
             let r = {
 
                 "fulfillmentText": fact,
-                "fulfillmentMessages": [ simpleResponse,{ "text": { "text": [fact] } }, suggestions],
+                "fulfillmentMessages": [{
+                    "platform": "ACTIONS_ON_GOOGLE",
+                    "simpleResponses": {
+                        "simpleResponses": [
+                            {
+                                "textToSpeech": fact
+                            }
+                        ]
+                    }
+                },simpleResponse, suggestions],
                 "source": ""
 
             };
