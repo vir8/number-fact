@@ -22,22 +22,22 @@ exports.find = (function (req, res) {
             }
         };
 
-        var suggestions={
-            "platform": "ACTIONS_ON_GOOGLE",
-            "suggestions": {
-              "suggestions": [
+    var suggestions = {
+        "platform": "ACTIONS_ON_GOOGLE",
+        "suggestions": {
+            "suggestions": [
                 {
-                  "title": Math.floor(Math.random()*101)
+                    "title": Math.floor(Math.random() * 101)
                 },
                 {
-                  "title": Math.floor(Math.random()*101)
+                    "title": Math.floor(Math.random() * 101)
                 },
                 {
-                  "title": Math.floor(Math.random()*101)
+                    "title": Math.floor(Math.random() * 101)
                 }
-              ]
-            }
-          }
+            ]
+        }
+    }
 
     var random = Math.random();
     random = Math.floor(random * 100) + 1;//[1,100]
@@ -73,11 +73,21 @@ exports.find = (function (req, res) {
             speech = "Seems like I don't know any fact about this number.Let's try another.";
             let r = {
 
-                "fulfillmentText": speech,
-                "fulfillmentMessages": [{ "text": { "text": [speech] } },suggestions],
-                "source": ""
+                
+                "fulfillmentMessages": [{
+                    "platform": "ACTIONS_ON_GOOGLE",
+                    "simpleResponses": {
+                        "simpleResponses": [
+                            {
+                                "textToSpeech": speech
+                            }
+                        ]
+                    }
+                }, suggestions]//,
+                //"source": ""
 
             };
+
             return res.json(r);
 
         }
@@ -86,7 +96,7 @@ exports.find = (function (req, res) {
             let r = {
 
                 "fulfillmentText": fact,
-                "fulfillmentMessages": [{ "text": { "text": [fact] } },simpleResponse,suggestions],
+                "fulfillmentMessages": [ simpleResponse,{ "text": { "text": [fact] } }, suggestions],
                 "source": ""
 
             };
