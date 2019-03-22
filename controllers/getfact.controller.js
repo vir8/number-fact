@@ -34,6 +34,9 @@ exports.find = (function (req, res) {
                 },
                 {
                     "title": Math.floor(Math.random() * 101)
+                },
+                {
+                    "title": "Stop"
                 }
             ]
         }
