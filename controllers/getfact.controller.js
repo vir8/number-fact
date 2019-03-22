@@ -101,7 +101,7 @@ exports.find = (function (req, res) {
                     "simpleResponses": {
                         "simpleResponses": [
                             {
-                                "textToSpeech": fact+"\n\n"
+                                "textToSpeech": fact
                             }
                         ]
                     }
