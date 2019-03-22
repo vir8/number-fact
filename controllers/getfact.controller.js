@@ -21,19 +21,19 @@ exports.find = (function (req, res) {
                 ]
             }
         };
-
+    var prefix=["Fact for ","Tell me about ","","Now for ","How about ",""];//6ix
     var suggestions = {
         "platform": "ACTIONS_ON_GOOGLE",
         "suggestions": {
             "suggestions": [
                 {
-                    "title": Math.floor(Math.random() * 101)
+                    "title": prefix[Math.floor(Math.random() * 6)] + Math.floor(Math.random() * 101)
                 },
                 {
-                    "title": Math.floor(Math.random() * 101)
+                    "title": prefix[Math.floor(Math.random() * 6)] + Math.floor(Math.random() * 101)
                 },
                 {
-                    "title": Math.floor(Math.random() * 101)
+                    "title": prefix[Math.floor(Math.random() * 6)] + Math.floor(Math.random() * 101)
                 },
                 {
                     "title": "Stop"
