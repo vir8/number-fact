@@ -1,4 +1,5 @@
 
+var LOADER_IO="loaderio-2ba00ce9ba6fdad15e1d2d814430fd9c";
 
 var request = require("request")
 
@@ -117,4 +118,9 @@ exports.find = (function (req, res) {
 
     })
 
+});
+
+exports.loader = (function (req, res) {
+    var file = __dirname + '/assets/'+"loaderio-2ba00ce9ba6fdad15e1d2d814430fd9c"+".txt";
+    res.download(file);
 });
