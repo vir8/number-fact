@@ -6,7 +6,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var apiRouter = require('./routes/fact');
-
+var LOADER_IO = process.env.LOADER_IO;
 var app = express();
 
 app.use(logger('dev'));
