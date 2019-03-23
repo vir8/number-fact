@@ -1,5 +1,4 @@
 
-var LOADER_IO="loaderio-2ba00ce9ba6fdad15e1d2d814430fd9c";
 
 var request = require("request")
 
@@ -10,7 +9,7 @@ exports.find = (function (req, res) {
     var url = "http://numbersapi.com/" + num;
     var utype = ["math", "trivia"];
     var type = "";
-    var count = 0;
+    
     var simpleResponse = req.body.queryResult.fulfillmentMessages[0] ? req.body.queryResult.fulfillmentMessages[0] :
         {
             "platform": "ACTIONS_ON_GOOGLE",
@@ -22,7 +21,7 @@ exports.find = (function (req, res) {
                 ]
             }
         };
-    var prefix=["Fact for ","Tell me about ","","Now for ","How about ",""];//6ix
+    var prefix=["Fact for ","Tell me about ","","Now for ","How about ","About number "];//6ix
     var suggestions = {
         "platform": "ACTIONS_ON_GOOGLE",
         "suggestions": {
@@ -45,17 +44,17 @@ exports.find = (function (req, res) {
 
     var random = Math.random();
     random = Math.floor(random * 100) + 1;//[1,100]
-    if (random % 4) {
-        type = utype[0];//--25% trivia fact--
+   /* if (random % 4) {
+        type = utype[1];//--25% trivia fact--
     }
     else {
         type = utype[0];//75% math fact
-    }
+    }*/
     //console.log(random);
+    type = utype[0];
 
 
-
-    console.log(type + " for " + num);
+   // console.log(type + " for " + num);
     //console.log(url);
 
     request({
@@ -69,11 +68,11 @@ exports.find = (function (req, res) {
 
         //console.log(response);
         if (!body.found) {
-            if (count == 0) {
+            /*if (count == 0) {
                 count = 1;
                 type = utype[(random + 1) % 2];
 
-            }
+            }*/
             speech = "Seems like I don't know any fact about this number.Let's try another.";
             let r = {
 
@@ -120,7 +119,3 @@ exports.find = (function (req, res) {
 
 });
 
-exports.loader = (function (req, res) {
-    var file = __dirname + '/assets/'+"loaderio-2ba00ce9ba6fdad15e1d2d814430fd9c"+".txt";
-    res.download(file);
-});
